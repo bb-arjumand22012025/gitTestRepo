@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"project/db"
 	"project/models"
+	// "github.com/gorilla/mux"
 )
 
 func GetAllCinemas(w http.ResponseWriter, r *http.Request) {
@@ -96,4 +97,3 @@ func DeleteTheatre(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(fmt.Sprintf("Cinema id '%d' deleted successfully ", cinema.CinemaID)))
 }
-

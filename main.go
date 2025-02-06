@@ -22,10 +22,13 @@ func main() {
 	r.Handle("/seat", middleware.BasicAuthMiddleware(http.HandlerFunc(handlers.BookSeats))).Methods("POST")
 
 	r.Handle("/addcinema", middleware.BasicAuthMiddleware(http.HandlerFunc(handlers.AddTheatre))).Methods("POST")
-	r.Handle("/updatecinema", middleware.BasicAuthMiddleware(http.HandlerFunc((handlers.UpdateCinema)))).Methods("PUT")
-	r.Handle("/deletecinema", middleware.BasicAuthMiddleware(http.HandlerFunc((handlers.DeleteTheatre)))).Methods("DELETE")
-	r.Handle("/getmovie/{ID}", middleware.BasicAuthMiddleware(http.HandlerFunc((handlers.GetByMovieId)))).Methods("GET")
+	r.Handle("/updatecinema", middleware.BasicAuthMiddleware(http.HandlerFunc(handlers.UpdateCinema))).Methods("PUT")
+	r.Handle("/deletecinema", middleware.BasicAuthMiddleware(http.HandlerFunc(handlers.DeleteTheatre))).Methods("DELETE")
+	r.Handle("/getmovie/{ID}", middleware.BasicAuthMiddleware(http.HandlerFunc(handlers.GetByMovieId))).Methods("GET")
 
+	r.Handle("/getroom", middleware.BasicAuthMiddleware(http.HandlerFunc(handlers.GetRoomTable))).Methods("GET")
+	r.Handle("/getroom/{name}", middleware.BasicAuthMiddleware(http.HandlerFunc(handlers.GetMovieTheatre))).Methods("GET")
+	r.Handle("/bookroom", middleware.BasicAuthMiddleware(http.HandlerFunc(handlers.BookRoom))).Methods("POST")
 
 	// routes without authorization
 	// r.HandleFunc("/movies", handlers.GetMovies).Methods(("GET"))

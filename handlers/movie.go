@@ -34,11 +34,11 @@ func GetMovies(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(movies)
 }
 
-func GetByMovieId(w http.ResponseWriter, r *http.Request) { 
+func GetByMovieId(w http.ResponseWriter, r *http.Request) {
 	// first we want to extract the movie ID from the URL path
-	movieID := mux.Vars(r)["id"]
-	movieName := mux.Vars(r)["name"]
-	fmt.Println(movieID, movieName)
+	movieID := mux.Vars(r)["ID"]
+	// movieName := mux.Vars(r)["name"]
+	fmt.Println(movieID)
 	// now we want to query the database for the movie - sql query
 	query := `SELECT m_id, movie_name, movie_des FROM movie WHERE m_id = ?`
 	row := db.DB.QueryRow(query, movieID)
